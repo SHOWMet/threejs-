@@ -1,0 +1,463 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<title>面料三维模拟</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=0">
+		<meta name="imagemode" content="force">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="format-detection" content="telephone=no">
+		<meta charset="utf-8">
+		<meta http-equiv="expires" content="Wed, 26 Feb 1997 08:21:57 GMT">
+
+		<script src="js/jquery-1.10.2.js"></script>
+		<link href="css/css.css" rel="stylesheet" />
+		<link href="css/1.0.8/iconfont.css" rel="stylesheet" />
+		<!--<script src="js/nprogress.js"></script>
+    <link href="css/nprogress.css" rel="stylesheet" />-->
+		<link href="js/Swiper-3.4.2/dist/css/swiper.min.css" rel="stylesheet" />
+		<script src="js/three.js"></script>
+		<script src="js/OBJLoader.js"></script>
+		<script src="js/OrbitControls.js?1204"></script>
+		<script src="js/loadimg.js"></script>
+		<style>
+			#fabric,
+			#model {
+				width: 100%;
+			}
+			
+			.swiper-slide {
+				max-width: 10rem;
+				height: 8rem;
+				margin: 0.0rem;
+				display: -webkit-box;
+				overflow: hidden;
+			}
+			
+			.swiper-slide:nth-child(2n) {
+				width: 40%;
+			}
+			
+			.swiper-slide:nth-child(3n) {
+				/* width: 20%;*/
+			}
+			
+			#loadts {
+				position: absolute;
+				width: 60%;
+				background-color: #000000;
+				color: white;
+				border: 0px solid;
+				border-radius: 5px;
+				opacity: 0.9;
+				padding: 0.6rem;
+				text-align: center;
+				max-width: 200px;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<!-- <div id="canvas" class="threebox"></div>-->
+
+		<div id="loadts"></div>
+		<div id="fzfoot">
+			<div class="itemgun">
+				<div class="fzsubmenu" id="fabric">
+
+					<div class="swiper-wrapper">
+
+						<div class="swiper-slide">
+							<img src="images/defimg.png" data-original="upload/s1.jpg" class="lazyloading" data-tag="fabric" />
+						</div>
+						<div class="swiper-slide">
+							<img src="images/defimg.png" data-original="upload/s2.jpg" class="lazyloading" data-tag="fabric" />
+						</div>
+						<div class="swiper-slide">
+							<img src="images/defimg.png" data-original="upload/s3.jpg" class="lazyloading" data-tag="fabric" />
+						</div>
+						<div class="swiper-slide">
+							<img src="images/defimg.png" data-original="upload/s4.jpg" class="lazyloading" data-tag="fabric" />
+						</div>
+						<div class="swiper-slide">
+							<img src="images/defimg.png" data-original="upload/s5.jpg" class="lazyloading" data-tag="fabric" />
+						</div>
+						<div class="swiper-slide">
+							<img src="images/defimg.png" data-original="upload/s6.jpg" class="lazyloading" data-tag="fabric" />
+						</div>
+						<div class="swiper-slide">
+							<img src="images/defimg.png" data-original="upload/s7.jpg" class="lazyloading" data-tag="fabric" />
+						</div>
+						<div class="swiper-slide">
+							<img src="images/defimg.png" data-original="upload/s8.jpg" class="lazyloading" data-tag="fabric" />
+						</div>
+						<div class="swiper-slide">
+							<img src="images/defimg.png" data-original="upload/s9.jpg" class="lazyloading" data-tag="fabric" />
+						</div>
+						<div class="swiper-slide">
+							<img src="images/defimg.png" data-original="upload/s10.jpg" class="lazyloading" data-tag="fabric" />
+						</div>
+						<div class="swiper-slide">
+							<img src="images/defimg.png" data-original="upload/s11.jpg" class="lazyloading" data-tag="fabric" />
+						</div>
+						<div class="swiper-slide">
+							<img src="images/defimg.png" data-original="upload/s12.jpg" class="lazyloading" data-tag="fabric" />
+						</div>
+						<div class="swiper-slide">
+							<img src="images/defimg.png" data-original="upload/s13.jpg" class="lazyloading" data-tag="fabric" />
+						</div>
+						<div class="swiper-slide">
+							<img src="images/defimg.png" data-original="upload/s14.jpg" class="lazyloading" data-tag="fabric" />
+						</div>
+						<div class="swiper-slide">
+							<img src="images/defimg.png" data-original="upload/s15.jpg" class="lazyloading" data-tag="fabric" />
+						</div>
+						<div class="swiper-slide">
+							<img src="images/defimg.png" data-original="upload/s16.jpg" class="lazyloading" data-tag="fabric" />
+						</div>
+						<div class="swiper-slide">
+							<img src="images/defimg.png" data-original="upload/s17.jpg" class="lazyloading" data-tag="fabric" />
+						</div>
+
+					</div>
+
+				</div>
+				<div class="fzsubmenu" id="model">
+
+					<div class="swiper-wrapper">
+
+						<div class="swiper-slide">
+							<img src="obj/shirt.jpg" data-tag="model" />
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="fzm">
+				<div class="fzmenubtn curm fzitem" data-id="fabric">
+					<i class="Hui-iconfont Hui-iconfont-picture"></i>
+					<p>面料</p>
+				</div>
+				<div class="fzmenubtn  fzitem" data-id="model">
+					<i class="Hui-iconfont Hui-iconfont-pifu"></i>
+					<p>模型</p>
+				</div>
+				<div class="fzmenubtn  fzitem" data-id="goback">
+					<i class="Hui-iconfont Hui-iconfont-chexiao"></i>
+					<p>返回</p>
+				</div>
+			</div>
+		</div>
+
+		<script src="js/Swiper-3.4.2/dist/js/swiper.min.js"></script>
+	</body>
+
+</html>
+
+<script>
+	$(document).ready(function() {
+		$('img[data-tag="model"').bind("click", function() {
+			$('img[data-tag="model"').css("border", "2px #ffffff solid");
+			$(this).css("border", "2px #ff0000 solid");
+
+		});
+		$('img[data-tag="model"').eq(0).click();
+
+		$('img[data-tag="fabric"').bind("click", function() {
+			$('img[data-tag="fabric"').css("border", "2px #ffffff solid");
+			$(this).css("border", "2px #ff0000 solid");
+			moli(this);
+		});
+	});
+
+	$(function() {
+		//NProgress.start();
+		//$(window).load(function () {
+		//    NProgress.done();
+		//});
+
+		var swiper = new Swiper('#model', {
+			slidesPerView: 'auto',
+			scrollbarHide: true,
+			centeredSlides: false,
+			spaceBetween: 1,
+			freeMode: true
+		});
+
+		var swiper = new Swiper('#fabric', {
+			slidesPerView: 'auto',
+			scrollbarHide: true,
+			centeredSlides: false,
+			spaceBetween: 1,
+			freeMode: true
+		});
+
+		$(".fzmenubtn").bind("click", function() {
+			$(".fzmenubtn").removeClass("curm");
+			$(this).addClass("curm");
+			switch($(this).attr("data-id")) {
+				case "fabric":
+					$('#model').hide();
+					$('#fabric').show();
+					break;
+				case "model":
+					$('#model').show();
+					$('#fabric').hide();
+					break;
+				case "goback":
+					window.location = 'detail.html';
+					break;
+			}
+		});
+
+	});
+</script>
+<script>
+	//在这里写面料模拟代码
+	function moli(obj) {
+
+		for(var i = 0; i < parts.length; i++) {
+
+			//var texture = THREE.ImageUtils.loadTexture($(obj).attr('src'));//加载纹理贴图
+			//var planeMaterial = new THREE.MeshLambertMaterial({//贴图通过材质添加给几何体
+			//    map: texture//给纹理属性map赋值
+			//});//材质对象
+			//var planeMesh = new THREE.Mesh(parts[i], planeMaterial);//纹理贴图网格模型
+			//planeMesh.translateZ(50.1);//平移纹理贴图网格模型
+
+			//    parts[i].material.map = THREE.ImageUtils.loadTexture($(obj).attr('src'));
+			parts[i].material.map = GetTexturer($(obj).attr('src'));
+		}
+	}
+	var container, controls;
+	var camera, scene, renderer, light;
+	var manager, raycaster;
+	var parts = [];
+	init();
+	animate();
+
+	$('#loadts').css("left", $(document).innerWidth() / 2 - $('#loadts').width() / 2);
+	$('#loadts').css("top", $("#canvas").height() / 2 - $('#loadts').height() / 2);
+
+	var loadproc = ''; //当前加载的对象数量
+	function init() {
+
+		container = document.createElement('div');
+		container.id = 'canvas';
+		container.className = 'threebox';
+		document.body.appendChild(container);
+		$("#canvas").height($(window).height() - $("#fzfoot").height());
+
+		camera = new THREE.PerspectiveCamera(10, $("#canvas").innerWidth() / $("#canvas").innerHeight(), 0.1, 1000);
+
+		camera.position.set(-30, 0, -400);
+
+		scene = new THREE.Scene();
+
+		light = new THREE.DirectionalLight(0xffffff);
+		light.position.set(100, 100, 40)
+		scene.add(light)
+
+		//var axes = new THREE.AxisHelper(20);
+		//scene.add(axes);
+
+		manager = new THREE.LoadingManager();
+		manager.onProgress = function(item, loaded, total) {
+			//  console.log(item, loaded, total);
+			loadproc = "Loading &nbsp;&nbsp;" + loaded + "&nbsp;of&nbsp;" + total;
+			if(loaded == total) {
+				$("#loadts").hide();
+			}
+
+		};
+
+		/*
+
+		var onProgress = function (xhr) {
+		    if (xhr.lengthComputable) {
+		        var percentComplete = xhr.loaded / xhr.total * 100;
+		        $("#loadts").html(Math.round(percentComplete, 2) + '%');
+		        console.log(Math.round(percentComplete, 2) + '%');
+
+		    }
+		};
+
+		var onError = function (xhr) {
+		};
+
+
+		var texture = new THREE.Texture();
+		var loader = new THREE.ImageLoader(manager);
+		loader.load('upload/s17.jpg', function (image) {
+		    texture.image = image;
+		    texture.needsUpdate = true;
+		});
+
+		var loader2 = new THREE.OBJLoader(manager);
+		loader2.load('model/niukou.obj', function (object) {
+		    object.traverse(function (child) {
+		        if (child instanceof THREE.Mesh) {
+		            child.material.map = texture;
+		            oj.push(child);
+		        }
+		    });
+		    object.position.set(0, -20, 0);
+		    scene.add(object);
+
+		}, onProgress, onError);
+		*/
+
+		/*
+        var texture = THREE.ImageUtils.loadTexture("upload/s1.jpg");//加载纹理贴图        
+        var material= new THREE.MeshLambertMaterial({//贴图通过材质添加给几何体
+            map: texture,//GetTexturer("upload/s5.jpg"),//给纹理属性map赋值
+            side: THREE.DoubleSide,//两面可见
+            
+        });
+       // var material = new THREE.MeshLambertMaterial({ map: THREE.ImageUtils.loadTexture('upload/s5.jpg') });
+   
+        var loader = new THREE.JSONLoader();
+        loader.load('model/1.js', function (geometry, materials) {
+            var mesh = new THREE.Mesh(geometry, material);//new THREE.MeshFaceMaterial(materials));            
+            mesh.position.set(0, -20, 0);
+            //mesh.scale.x = mesh.scale.y = mesh.scale.z = 1.5;
+            scene.add(mesh);
+        });
+        */
+
+		var defImg = 'upload/s17.jpg';
+		LoadModel('model/ChenYi.obj', 'upload/ChenYi.jpg');
+		LoadModel('model/ChenYiLin.obj', 'upload/ChenYi.jpg');
+		LoadModel('model/LinDai.obj', 'upload/LinDai.jpg');
+		LoadModel('model/ChenYi_XiuKou_R.obj', 'upload/ChenYi.jpg');
+		LoadModel('model/ChenYi_XiuKou_L.obj', 'upload/ChenYi.jpg');
+		LoadModel('model/ChenYi_NiuKou.obj', defImg);
+		LoadModel('model/NiuKou.obj', defImg);
+		LoadModel('model/NiuKouYan.obj', defImg);
+		LoadModel('model/ok_CheDai_L.obj', defImg);
+		LoadModel('model/ok_CheDai_R.obj', defImg);
+		LoadModel('model/ok_HouPian.obj', defImg);
+		LoadModel('model/ok_Lin_L.obj', defImg);
+		LoadModel('model/ok_Lin_R.obj', defImg);
+		LoadModel('model/ok_Lin_Up.obj', defImg);
+		LoadModel('model/ok_QianPian_L.obj', defImg);
+		LoadModel('model/ok_QianPian_R.obj', defImg);
+		LoadModel('model/ok_XiongDai.obj', defImg);
+		LoadModel('model/ok_XiuZhi_L.obj', defImg);
+		LoadModel('model/ok_XiuZhi_R.obj', defImg);
+
+		renderer = new THREE.WebGLRenderer({
+			antialias: true, //antialias:true/false是否开启反锯齿
+			precision: "highp", //precision:highp/mediump/lowp着色精度选择
+			alpha: true, //alpha:true/false是否可以设置背景色透明
+			premultipliedAlpha: false, //
+			stencil: false, //
+			preserveDrawingBuffer: true, //preserveDrawingBuffer:true/false是否保存绘图缓冲
+			maxLights: 1 //maxLights:最大灯光数
+		});
+		renderer.setPixelRatio(window.devicePixelRatio);
+		renderer.setSize($("#canvas").innerWidth(), $("#canvas").innerHeight());
+		renderer.shadowMapEnabled = true;
+		// renderer.setClearColor(0x424242);
+		container.appendChild(renderer.domElement);
+
+		camera.lookAt(scene.position);
+		var controls = new THREE.OrbitControls(camera, renderer.domElement);
+		controls.maxPolarAngle = Math.PI / 2;
+		controls.minPolarAngle = Math.PI / 2;
+		controls.maxZoom = 0.2;
+
+		window.addEventListener('resize', onWindowResize, false);
+
+	}
+
+	function add() {
+
+	}
+
+	function LoadModel(obj, img) {
+		var loader2 = new THREE.OBJLoader(manager);
+		loader2.load(obj, function(object) {
+			object.traverse(function(child) {
+				if(child instanceof THREE.Mesh) {
+					child.material = new THREE.MeshLambertMaterial({
+						//	color: Allcolor,
+						map: GetTexturer(img),
+					//	envMap: evMaps()
+
+					});
+					// child.material.devicePixelRatio = 10;
+					if(obj.indexOf("ok_") > -1)
+						parts.push(child);
+				}
+			});
+			object.receiveShadow = true;
+			object.castShadow = true;
+			object.position.set(0, -20, 0);
+
+			/*
+            var loader = new THREE.JSONLoader();
+loader.load( 'model.json', function ( geometry, materials ) {
+    var mesh = new THREE.Mesh( geometry, new THREE.MeshFaceMaterial( materials ) );
+    scene.add(mesh);
+});
+            */
+			scene.add(object);
+		}, OnProcess, loadErr);
+	}
+
+	function OnProcess(xhr) {
+		if(xhr.lengthComputable) {
+			var percentComplete = xhr.loaded / xhr.total * 100;
+			$("#loadts").html(loadproc + "&nbsp;&nbsp;" + Math.round(percentComplete, 2) + '%');
+			//console.log(Math.round(percentComplete, 2) + '%');
+		}
+	}
+
+	function loadErr(xhr) {}
+
+	function GetTexturer(img) {
+		var maps = new THREE.TextureLoader().load(img)
+
+		maps.wrapS = maps.wrapT = THREE.RepeatWrapping;
+		maps.repeat.set(64, 64);
+		maps.needsUpdate = true;
+		//				maps.format  = THREE.FloatType;//像素数据的颜色格式
+		//				maps.minFilter  = THREE.RGBFormat ;//纹理在缩小时的过滤方式
+
+		maps.anisotropy = .8
+		return maps;
+	}
+
+	function evMaps() {
+		var r = 'images/';
+		var urls = [r + "tt.jpg", r + "tt.jpg",
+			r + "tt.jpg", r + "tt.jpg",
+			r + "tt.jpg", r + "tt.jpg"
+		];
+
+		var textureCube = new THREE.CubeTextureLoader().load(urls);
+		textureCube.format = THREE.RGBFormat;
+		textureCube.mapping = THREE.CubeReflectionMapping;
+
+		return textureCube
+	}
+
+	function onWindowResize() {
+
+		camera.aspect = $("#canvas").innerWidth() / $("#canvas").innerHeight();
+		camera.updateProjectionMatrix();
+
+		renderer.setSize($("#canvas").innerWidth(), $("#canvas").innerHeight());
+
+	}
+
+	function animate() {
+
+		light.position.copy(camera.position);
+		requestAnimationFrame(animate);
+		renderer.render(scene, camera);
+	}
+</script>

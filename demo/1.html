@@ -1,0 +1,40 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Lession1</title>
+    <style>
+        body {
+        margin:0px;
+        padding:0px;
+        }
+    </style>
+    <script src="../js/jquery-1.10.2.js"></script>
+    <script src="../js/three.js"></script>
+
+</head>
+
+<body>
+    <div id="container"></div> 
+     
+
+</body>
+
+
+</html>  
+<script>
+    var scene = new THREE.Scene();
+    var camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 500);
+    var render = new THREE.WebGLRenderer();
+    render.setClearColor(0x888888);
+    render.setSize(window.innerWidth-100 ,window.innerHeight-100);
+
+    var axes = new THREE.AxisHelper(20);
+    scene.add(axes);
+
+    camera.position.set(40, 30, 20);
+    camera.lookAt(new THREE.Vector3(0,0,-15));
+    $("#container").append(render.domElement);
+    render.render(scene, camera);
+</script>

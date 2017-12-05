@@ -1,0 +1,593 @@
+﻿* {
+    outline: none;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: "Helvetica Neue", Helvetica, STHeiTi, Arial, sans-serif;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    font-size: 62.5%;
+}
+
+
+body {
+    width: 100%;
+    max-width: 375px;
+    margin: 0px auto;
+    padding: 0px;
+    background-color: #FAFAFA;
+    -webkit-overflow-scrolling: touch;
+}
+
+
+
+.footer-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 900;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+}
+
+    .footer-nav .footer-show {
+        font-size: 0;
+        background: #f8f8f8;
+        height: 100%;
+        display: flex;
+    }
+
+
+ul, ol, li, dl, dd {
+    margin: 0;
+    padding: 0;
+}
+
+.footer-nav .footer-show .items {
+    display: block;
+    float: left;
+    height: 100%;
+    width: 25%;
+    font-size: 11px;
+    text-align: center;
+    position: relative;
+    padding-top: 7px;
+}
+
+    .footer-nav .footer-show .items p {
+        line-height: 100%;
+        /*margin-bottom: 0.4rem;*/
+        color: #333;
+        font-size: 11px;
+        margin: 5px 0px 7px 0px;
+    }
+
+    .footer-nav .footer-show .items i {
+        font-size: 25px;
+        color: #999;
+    }
+
+.boxsearch {
+    width: 100%;
+}
+
+.listbox {
+    width: 100%;
+    margin-bottom: 60px;
+}
+
+    .listbox .pditem {
+        display: flex;
+        width: 100%;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px dotted #999;
+        padding-top: 0.5rem;
+    }
+
+        .listbox .pditem .pdimg {
+            padding-left: 0.2rem;
+            min-width: 12rem;
+            max-width: 35%;
+            overflow: hidden;
+            max-height: 10rem;
+        }
+
+            .listbox .pditem .pdimg img {
+                width: 100%;
+            }
+
+        .listbox .pditem .pdtext {
+            padding: 0rem 0.5rem;
+            margin: 0px;
+            overflow: hidden;
+        }
+
+            .listbox .pditem .pdtext ul {
+            }
+
+            .listbox .pditem .pdtext .pdtitle {
+                color: #444;
+                font-size: 1.5rem;
+            }
+
+            .listbox .pditem .pdtext .pdsiyong {
+                color: #999;
+                font-size: 1.2rem;
+                overflow: hidden;
+                padding: 0.3rem 0rem;
+            }
+
+            .listbox .pditem .pdtext .pdjiage {
+                color: #f00;
+                font-size: 1.3rem;
+            }
+
+.boxsearch {
+    width: 100%;
+}
+
+/*detail*/
+
+.pdname {
+    color: #444;
+    font-size: 1.5rem;
+    line-height: 25px;
+    padding: 5px;
+}
+
+.pdprice {
+    color: #ff803a;
+    font-size: 1.7rem;
+    padding: 5px;
+}
+
+
+
+.back-home {
+    display: -webkit-box;
+    margin: 1rem 5px;
+    padding: 0 1rem;
+    height: 4.5rem;
+    background-color: #ffffff;
+    box-shadow: 0 0 1px #bababa;
+    font-size: 1.5rem;
+    color: #333333;
+    -webkit-box-align: center;
+    text-decoration: none;
+}
+
+a.back-home:hover {
+    text-decoration: none;
+}
+
+.back-home .span1 {
+    display: -webkit-box;
+    -webkit-box-flex: 1;
+    color: #555;
+}
+
+    .back-home .span1 .iconfont {
+        display: inline-block;
+        margin-right: 0.5rem;
+        font-size: 2rem;
+        color: #999999;
+        vertical-align: middle;
+    }
+
+.back-home .span2 {
+    display: -webkit-box;
+    color: #444;
+}
+
+    .back-home .span2 .iconfont {
+        margin-left: 0.5rem;
+        font-size: 1.4rem;
+    }
+
+
+
+
+#footFixedPay {
+    z-index: 999;
+    -webkit-user-select: none;
+    width: 100%;
+    height: 58px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    display: -webkit-box;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+    background-color: #f7f7f7;
+}
+
+    #footFixedPay .item {
+        position: relative;
+    }
+
+        #footFixedPay .item:after {
+            content: " ";
+            width: 200%;
+            height: 200%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            -webkit-transform: scale(0.5);
+            transform: scale(0.5);
+            -webkit-transform-origin: 0 0;
+            transform-origin: 0 0;
+            box-sizing: border-box;
+            pointer-events: none;
+        }
+
+    #footFixedPay .menu-btn {
+        height: 100%;
+        width: 60px;
+        display: -webkit-box;
+        -webkit-box-align: center;
+        -webkit-box-pack: center;
+        -webkit-box-orient: vertical;
+        font-size: 12px;
+        color: #333;
+    }
+
+        #footFixedPay .menu-btn .iconfont {
+            display: -webkit-box;
+            color: #999;
+            font-size: 2.2rem;
+        }
+
+    #footFixedPay .active-btn {
+        width: 9rem;
+        height: 100%;
+        display: -webkit-box;
+        -webkit-box-flex: 1;
+        -webkit-box-align: center;
+        -webkit-box-pack: center;
+        color: #fff;
+        font-size: 13px;
+    }
+
+        #footFixedPay .active-btn.add-cart {
+            background: #ffa124;
+        }
+
+        #footFixedPay .active-btn.buy-now {
+            background: #ff803a;
+        }
+
+    #footFixedPay .btn {
+        -webkit-box-align: center;
+        -webkit-box-pack: center;
+        display: -webkit-box;
+        margin: 0;
+        padding: 0;
+        height: 5rem;
+        background-color: #ff803a;
+        font-size: 1.5rem;
+        color: #fff;
+        width: 100%;
+    }
+
+    #footFixedPay .soldOut {
+        color: #fff;
+        background: #c3c3c3;
+    }
+
+    #footFixedPay .shoppingCart {
+        position: relative;
+        display: -webkit-box;
+        -webkit-box-pack: center;
+    }
+
+        #footFixedPay .shoppingCart em {
+            position: absolute;
+            font-size: 0.9rem;
+            width: 0.8rem;
+            height: 0.8rem;
+            background: red;
+            display: -webkit-box;
+            color: #fff;
+            border-radius: 50%;
+            right: 1.6rem;
+            top: 0.7rem;
+            -webkit-box-align: center;
+            -webkit-box-pack: center;
+            border: 1px solid #fff;
+        }
+
+.detailbox {
+    margin-bottom: 6rem;
+}
+
+.dtsel {
+    border-bottom: 1px solid #f00;
+    color: red;
+}
+
+.detailbox .detailtitle {
+    color: #777;
+    font-size: 1.5rem;
+    margin: 0.5rem;
+    display: -webkit-box;
+    background-color: white;
+}
+
+    .detailbox .detailtitle .dtitems {
+        display: -webkit-box;
+        -webkit-box-flex: 1;
+        /*border-bottom: 1px solid #fff;*/
+        padding: 0.5rem;
+    }
+
+.detailbox .detailmemo {
+    color: #777;
+    font-size: 1.5rem;
+    line-height: 2rem;
+    padding: 0.5rem;
+}
+
+    .detailbox .detailmemo img {
+        width: 100%;
+    }
+
+.zzc {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 9999;
+    display: none;
+    transition-duration: 400ms;
+}
+
+    .zzc .zzclr {
+        background-color: white;
+        width: 100%;
+        padding-top: 0.5rem;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        padding-bottom: 10rem;
+    }
+
+        .zzc .zzclr .zzcqr {
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+            left: 0;
+        }
+
+            .zzc .zzclr .zzcqr input[type="button"] {
+                width: 100%;
+                border: none;
+                padding: 10px 0px;
+                font-size: 1.5rem;
+                color: #fff;
+                background-color: #ffa124;
+            }
+
+        .zzc .zzclr .zzctitle {
+            display: -webkit-box;
+            -webkit-box-align: center;
+        }
+
+            .zzc .zzclr .zzctitle .zzctitleimg {
+                /*display: -webkit-box;*/
+                -webkit-box-flex: 1;
+                padding: 0.2rem;
+            }
+
+                .zzc .zzclr .zzctitle .zzctitleimg .zzcimg {
+                    width: 6.3rem;
+                    height: 6.3rem;
+                    float: left;
+                    overflow:hidden;
+                }
+
+                    .zzc .zzclr .zzctitle .zzctitleimg .zzcimg img {
+                        width: 200%;
+                        /*height: 100%;*/
+                    }
+
+                .zzc .zzclr .zzctitle .zzctitleimg .zzcms {
+                    padding-left: 6.8rem;
+                }
+
+                    .zzc .zzclr .zzctitle .zzctitleimg .zzcms .zzcpoptitle {
+                        font-size: 1.5rem;
+                        line-height: 1.5rem;
+                    }
+
+                    .zzc .zzclr .zzctitle .zzctitleimg .zzcms .zzcpopjg {
+                        color: #ff803a;
+                        font-size: 1.6rem;
+                        padding-top: 0.5rem;
+                    }
+
+.zzclr hr {
+    border: 1px;
+    border-bottom: 1px dotted #999;
+    width: 100%;
+}
+
+.zzc .zzclr .zzctitle .zzctitledesc {
+    display: -webkit-box;
+    margin-top: -5rem;
+    margin-right: 0.4rem;
+}
+
+    .zzc .zzclr .zzctitle .zzctitledesc i {
+        font-size: 1.5rem;
+        border-radius: 3rem;
+        padding: 0.2rem;
+        color: #fff;
+        background-color: black;
+    }
+
+.zzc .zzclr .zzccolorbox {
+}
+
+    .zzc .zzclr .zzccolorbox .zzcolortitle {
+        font-size: 1.5rem;
+        padding-left: 1rem;
+    }
+
+    .zzc .zzclr .zzccolorbox .zzccoloritems {
+        padding-left: 1rem;
+        margin-bottom: 1.5rem;
+        margin-top: 1rem;
+    }
+
+        .zzc .zzclr .zzccolorbox .zzccoloritems a {
+            padding: 0.5rem 1rem;
+            background-color: #eee;
+            border-radius: 0.5rem;
+            display: -webkit-inline-box;
+            margin-top: 0.5rem;
+            margin-right: 0.5rem;
+            text-decoration: none;
+            color: #444;
+            font-size: 1.3rem;
+        }
+
+
+.zzc .zzclr .zzcgmbox {
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    display: -webkit-box;
+}
+
+    .zzc .zzclr .zzcgmbox .zzcgmsltitle {
+        font-size: 1.5rem;
+        padding-left: 1rem;
+        display: -webkit-box;
+        -webkit-box-flex: 1;
+        padding-top: 0.4rem;
+    }
+
+    .zzc .zzclr .zzcgmbox .zzcgmsl {
+        display: -webkit-box;
+        font-size: 0.8rem;
+        color: #444;
+    }
+
+
+        .zzc .zzclr .zzcgmbox .zzcgmsl input {
+            min-height: 1.6em;
+            border: none;
+            height: 1rem;
+            text-align: center;
+            background: #f1f1f1;
+            width: 4rem;
+            font-size: 1.5rem;
+            padding: 1.3rem 0rem;
+        }
+
+        .zzc .zzclr .zzcgmbox .zzcgmsl a {
+               /*font-size: 1.5rem;
+    color: #444;
+    text-decoration: none;
+    margin: 0rem 0.5rem;*/
+                   font-size: 1.5rem;
+    color: #444;
+    text-decoration: none;
+    margin: 0rem 0.5rem;
+    background-color: #f1f1f1;
+    height: 2.6rem;
+    display: block;
+    padding-top: 0.8rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+        }
+/*3dfz*/
+.threebox {
+    background-color: #999;
+    width: 100%;
+}
+
+#fzfoot {
+    z-index: 999;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}
+
+ #fzfoot .itemgun {
+    overflow: hidden;
+    width: 100%;
+    height: 8.1rem;
+    background-color: #ffffff;
+    border-bottom: 1px solid #a9a7a7;
+}
+
+    #fzfoot .itemgun .fzsubmenu {
+        display: -webkit-inline-box;
+    }
+
+
+
+
+        #fzfoot .itemgun .fzsubmenu img {
+            width: 100%;
+            height: 100%;
+    border: 2px #ffffff solid;
+        }
+
+    #fzfoot .fzm {
+        width: 100%;
+        display: -webkit-box;
+        -webkit-box-pack: center;
+        -webkit-box-align: center;
+        background-color: #eeeeee;
+        -webkit-user-select: none;
+    }
+
+.fzmenubtn {
+    height: 5rem;
+    width: 33.3%;
+    display: -webkit-box;
+    -webkit-box-align: center;
+    -webkit-box-pack: center;
+    -webkit-box-orient: vertical;
+    color: #555;
+}
+
+#fzfoot .fzitem {
+    position: relative;
+}
+
+    #fzfoot .fzitem i {
+        font-size: 2rem;
+    }
+
+    #fzfoot .fzitem p {
+        margin: 0rem;
+        font-size: 1.5rem;
+    }
+
+.curm {
+    background-color: red;
+    color: white;
+}
+/*index*/
+.searchbox { 
+       border: 1px solid #eee;
+    margin: 2px;
+    border-radius: 5px;
+    padding: 5px;
+    font-size:1.5rem;
+    color: #999;
+
+}
+.searchbox span{
+}
